@@ -7,8 +7,8 @@ export default async function UpgradePage() {
       <Header />
       <h2 className="text-2xl font-bold">Escolha o plano</h2>
       <div className="flex gap-4">
-        <Button>R$ 9,90 / mês</Button>
-        <Button>R$ 99,90 Vitalício</Button>
+        <Button className="cursor-pointer">R$ 9,90 / mês</Button>
+        <Button className="cursor-pointer">R$ 99,90 Vitalício</Button>
       </div>
     </div>
   );

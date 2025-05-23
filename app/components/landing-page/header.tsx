@@ -8,8 +8,8 @@ export default function Header() {
         <h3 className="text-white text-2xl font-bold">ProjectInBio</h3>
       </div>
       <div className="flex items-center gap-4">
-        <Button>Minha Página</Button>
-        <Button>Sair</Button>
+        <Button className="cursor-pointer">Minha Página</Button>
+        <Button className="cursor-pointer">Sair</Button>
       </div>
     </div>
   );
