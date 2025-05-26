@@ -1,28 +1,29 @@
-import { cert, getApps, initializeApp} from "firebase-admin/app";
+import { cert, getApps, initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
 import "server-only";
 
-// Certificado
+// Certifcado
 
-const decodedKey = Buffer.from(process.env.FIREBASE_PRIVATE_KEY!, "base64").toString("utf-8");
+const decodedKey = Buffer.from(
+  process.env.FIREBASE_PRIVATE_KEYBASE64!,
+  "base64"
+).toString("utf-8");
 
 export const firebaseCert = cert({
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-    privateKey: decodedKey ,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+  privateKey: decodedKey,
 });
 
-//Instancia do app
-
+// Instancia do app
 if (!getApps().length) {
-    initializeApp ({
-        credential: firebaseCert,
-        databaseURL: process.env.FIREBASE_DATABASE_URL,
-        storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    })
+  initializeApp({
+    credential: firebaseCert,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  });
 }
 
 export const db = getFirestore();
 
-export const storage  = getStorage().bucket();
+export const storage = getStorage().bucket();
